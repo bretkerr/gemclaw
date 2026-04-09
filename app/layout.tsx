@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Deep Research MoE",
+  title: "GEMCLAW — Cross-Model Intelligence Extraction",
   description: "Cross-model Mixture of Experts research engine — Claude x Gemini",
 };
 
