@@ -43,6 +43,7 @@ export default function Landing() {
           }}
         >
           <div className="scanlines" />
+          <img src="/hero.jpg" alt="" className="velvet-bg" />
 
           {/* Animated claw + gem SVG */}
           <div className="claw-scene">
@@ -89,6 +90,7 @@ export default function Landing() {
         <div className="revealed">
           {/* Hero */}
           <section className="hero">
+            <img src="/hero.jpg" alt="" className="hero-bg" />
             <p className="overline">Mixture of Experts &mdash; Deep Research Protocol</p>
             <h1 className="hero-title">The apex predator of cross-model research synthesis</h1>
             <p className="hero-body">
@@ -188,6 +190,11 @@ export default function Landing() {
             rgba(255,255,255,0.015) 2px,
             rgba(255,255,255,0.015) 4px
           );
+        }
+
+        .velvet-bg {
+          position: absolute; inset: 0; width: 100%; height: 100%;
+          object-fit: cover; opacity: 0.12; z-index: 0; pointer-events: none;
         }
 
         /* Claw animation */
@@ -298,10 +305,17 @@ export default function Landing() {
 
         /* Hero */
         .hero {
+          position: relative;
           max-width: 720px;
           margin: 0 auto;
           padding: 6rem 1.5rem 4rem;
           text-align: center;
+        }
+        .hero-bg {
+          position: absolute; inset: -4rem -8rem; width: calc(100% + 16rem); height: calc(100% + 8rem);
+          object-fit: cover; opacity: 0.08; z-index: 0; pointer-events: none;
+          mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+          -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
         }
         .overline {
           font-size: 0.65rem;
