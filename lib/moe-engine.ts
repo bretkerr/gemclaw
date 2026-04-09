@@ -238,16 +238,20 @@ Write the synthesized answer in clear, well-organized prose.`;
   session.rounds.push(result);
   session.currentRound = idx + 1;
 
-  // Auto-complete if all rounds done
-  if (session.currentRound >= session.totalRounds) {
-    await finalizeSynthesis(session);
-  }
-
   sessions.set(sessionId, session);
   return result;
 }
 
 // ─── Final synthesis across all rounds ───────────────────────────────────────
+
+export async function synthesizeSession(sessionId: string): Promise<ResearchSession> {
+  const session = sessions.get(sessionId);
+  if (!session) throw new Error(`Session ${sessionId} not found`);
+  if (session.rounds.length === 0) throw new Error("No rounds completed yet");
+  await finalizeSynthesis(session);
+  sessions.set(sessionId, session);
+  return session;
+}
 
 async function finalizeSynthesis(session: ResearchSession): Promise<void> {
   const allFindings = session.rounds
