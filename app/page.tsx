@@ -33,6 +33,12 @@ export default function Landing() {
 
   return (
     <>
+      {/* ── Top nav ─────────────────────────────────────────────────── */}
+      <nav className="top-nav" onClick={(e) => e.stopPropagation()}>
+        <a href="https://github.com/bretkerr/gemclaw-oss" target="_blank" rel="noopener noreferrer">Open Source</a>
+        <a href="https://substack.com/@bretkerr" target="_blank" rel="noopener noreferrer">Substack</a>
+      </nav>
+
       {/* ── PHASE 1: Velvet Rope ─────────────────────────────────────── */}
       {!revealed && (
         <div
@@ -175,6 +181,23 @@ export default function Landing() {
       `}</style>
 
       <style jsx>{`
+        /* ── Top nav ───────────────────────────────────────────────────── */
+        .top-nav {
+          position: fixed; top: 0; right: 0;
+          z-index: 200;
+          display: flex; gap: 1.25rem;
+          padding: 0.9rem 1.25rem;
+        }
+        .top-nav a {
+          font-size: 0.62rem;
+          color: #444;
+          text-decoration: none;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          transition: color 0.15s;
+        }
+        .top-nav a:hover { color: #FF0800; }
+
         /* ── Phase 1: Velvet Rope ──────────────────────────────────────── */
         .velvet {
           position: fixed; inset: 0; display: flex; flex-direction: column;
